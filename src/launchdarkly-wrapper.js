@@ -15,6 +15,7 @@ export function createLDProvider(context, Component) {
     options: {
       // allAttributesPrivate is a global setting which will mark all attributes except the context key as private
       // privateAttributes is an array of attributes that will be marked as private
+      // Note: allAttributesPrivate makes privateAttributes redundant
       // Documentation here: https://launchdarkly.github.io/js-client-sdk/interfaces/LDOptions.html
       allAttributesPrivate: true,
       privateAttributes: [
