@@ -10,7 +10,7 @@ import SessionReplay from "@launchdarkly/session-replay";
  */
 export function createLDProvider(context, Component) {
   return withLDProvider({
-    clientSideID: "609ead905193530d7c28647b",
+    clientSideID: import.meta.env.VITE_LAUNCHDARKLY_CLIENT_SIDE_ID,
     context: context,
     options: {
       // allAttributesPrivate is a global setting which will mark all attributes except the context key as private

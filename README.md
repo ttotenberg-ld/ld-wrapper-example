@@ -1,12 +1,23 @@
-# React + Vite
+# LaunchDarkly Wrapper Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application demonstrating LaunchDarkly integration with:
+- Custom LaunchDarkly wrapper with privacy controls
+- Raw LaunchDarkly context display
+- Network monitoring for events.launchdarkly.com with attribute obfuscation
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Rename `.env.example` to `.env` and replace the value with your client side id
 
-## Expanding the ESLint configuration
+```bash
+VITE_LAUNCHDARKLY_CLIENT_SIDE_ID=your_client_side_id_here
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run Instructions
+
+```bash
+npm install
+npm run dev
+```
+
+The app will be available at `http://localhost:5173`

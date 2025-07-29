@@ -13,7 +13,6 @@
     "@faker-js/faker": "^9.9.0",
     "@launchdarkly/observability": "^0.3.8",
     "@launchdarkly/session-replay": "^0.3.8",
-    "faker": "^6.6.6",
     "launchdarkly-js-client-sdk": "^3.8.1",
     "launchdarkly-react-client-sdk": "^3.8.1",
     "react": "^19.1.0",
