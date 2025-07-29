@@ -2,9 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { withLDProvider } from 'launchdarkly-react-client-sdk'
-import Observability from "@launchdarkly/observability";
-import SessionReplay from "@launchdarkly/session-replay";
+import { createLDProvider } from './launchdarkly-wrapper.js'
 import { v4 as uuidv4 } from 'uuid';
 import { faker } from '@faker-js/faker';
 
@@ -33,7 +31,7 @@ function generateRandomContext() {
     address: {
       street: faker.location.streetAddress(),
       city: faker.location.city(),
-      state: faker.location.stateAbbr(),
+      state: faker.location.state(),
       zip: faker.location.zipCode(),
     }
   };
@@ -63,28 +61,9 @@ function buildLaunchDarklyContext(randomData) {
 const randomUserData = generateRandomContext();
 const context = buildLaunchDarklyContext(randomUserData);
 
-const LDProvider = withLDProvider({
-  clientSideID: "609ead905193530d7c28647b",
-  context: context,
-  options: {
-    // allAttributesPrivate is a global setting which will mark all attributes except the context key as private
-    // privateAttributes is an array of attributes that will be marked as private
-    // Documentation here: https://launchdarkly.github.io/js-client-sdk/interfaces/LDOptions.html
-    allAttributesPrivate: true,
-    privateAttributes: ["name", "email", "birthdate", "phone", "ssn", "healthPlan", "accountNumber", "address"],
-    plugins: [
-      new Observability({ // Optional observability plugin
-        tracingOrigins: true,
-        networkRecording: {
-          enabled: true,
-          recordHeadersAndBody: true,
-        },
-      }),
-      new SessionReplay(), // Optional session replay plugin
-    ],
-  },
-})(App);
-
+// Create the LaunchDarkly provider with our context and App component
+// All attributes are private, as defined in the LaunchDarkly wrapper found in launchdarkly-wrapper.js
+const LDProvider = createLDProvider(context, App);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
