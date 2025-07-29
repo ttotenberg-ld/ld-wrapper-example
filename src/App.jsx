@@ -1,7 +1,9 @@
 import ldLogo from './assets/launchdarkly.svg'
 import './App.css'
 import LDContext from './components/ldcontext.jsx'
-import LDFlag from './components/ldflag.jsx'
+import TestEvent from './components/sendtestevent.jsx'
+
+import NetworkMonitor from './components/NetworkMonitor.jsx'
 
 function App() {
 
@@ -13,8 +15,9 @@ function App() {
         </a>
       </div>
       <h1>Example Wrapper</h1>
-      <LDFlag />
       <LDContext />
+      <TestEvent />
+      <NetworkMonitor />
     </>
   )
 }

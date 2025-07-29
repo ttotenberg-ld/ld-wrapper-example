@@ -27,14 +27,6 @@ export function createLDProvider(context, Component) {
         "accountNumber",
         "address",
       ],
-      // Enable INFO level logging (INFO, WARN, ERROR only - no DEBUG)
-      // Documentation: https://launchdarkly.github.io/js-client-sdk/interfaces/LDOptions.html#logger
-      logger: {
-        debug: (...args) => console.info('[LaunchDarkly DEBUG]', ...args),
-        info: (...args) => console.info('[LaunchDarkly INFO]', ...args),
-        warn: (...args) => console.warn('[LaunchDarkly WARN]', ...args),
-        error: (...args) => console.error('[LaunchDarkly ERROR]', ...args)
-      },
       plugins: [
         new Observability({
           // Optional observability plugin
