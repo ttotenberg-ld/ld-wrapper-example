@@ -19,14 +19,19 @@ export function createLDProvider(context, Component) {
       // Documentation here: https://launchdarkly.github.io/js-client-sdk/interfaces/LDOptions.html
       allAttributesPrivate: true,
       privateAttributes: [
-        "name",
-        "email",
-        "birthdate",
-        "phone",
-        "ssn",
-        "healthPlan",
-        "accountNumber",
-        "address",
+        "/name",
+        "/email",
+        "/birthdate",
+        "/phone",
+        "/ssn",
+        "/healthPlan",
+        "/accountNumber",
+        "/address",
+        // Nested attributes can be individually marked as private. The below are redundant by the inclusion of /address
+        "/address/street",
+        "/address/city",
+        "/address/state",
+        "/address/zip",
       ],
       plugins: [
         new Observability({
